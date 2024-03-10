@@ -6,18 +6,18 @@ This repository provides sample code on KNN clustering based on the physical dis
 
 The following code replaces manual drawing of clusters, made up of a set number of individual points on a map.
 
-**Scenario**
+## Scenario 
 
 We have a set of addresses on a map, each representing the home address of at least one person to be visited. One point may represent the home address of several people.
 
-**Assumptions**
+## Assumptions
 
 For this example code, we assume:
 
 1. Geolocation coordinates of each address are available. If not, they can be obtained via the Google Maps Geolocation API.
 2. Each point has an indicator showing how many people live at that location. In this example, we set this indicator to a mean of 2 within the provided coordinates.
 
-**Aim**
+## Aim
 
 The goal is to visit each point within a group once, adhering to:
 
@@ -25,7 +25,7 @@ The goal is to visit each point within a group once, adhering to:
 2. A maximum distance traveled to visit each point once.
 3. A maximum number of points per group.
 
-**Approach**
+## Approach
 
 The approach combines information from:
 
