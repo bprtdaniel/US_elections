@@ -1,26 +1,43 @@
+# KNN Clustering for Geographic Data
+
 This repository provides sample code on KNN clustering based on the physical distance between longitude and latitude coordinate points.
 
-The following code can be used to replace manual drawing of clusters, made up of a set number of individual points on a map.
+## Overview
+
+The following code replaces manual drawing of clusters, made up of a set number of individual points on a map.
 
 **Scenario**
 
-Say we have a set of addresses on a map, which indicates at least one person living there.
+We have a set of addresses on a map, each representing the home address of at least one person to be visited. One point may represent the home address of several people.
 
 **Assumptions**
 
-For this example code, we assume to have the geolocation coordinates of each address. If not, it is possible to obtain those via the Google Maps Geolocation API.
-We additionally assume that we have some kind of indicator attached to each point (geolocation) that shows how many people live at this point. For the example code, this is set to a mean of 2 within the example coordinates.
+For this example code, we assume:
+
+1. Geolocation coordinates of each address are available. If not, they can be obtained via the Google Maps Geolocation API.
+2. Each point has an indicator showing how many people live at that location. In this example, we set this indicator to a mean of 2 within the provided coordinates.
 
 **Aim**
 
-We want to be able to visit each point within a group once. Hereby, we aim to adhere to a maximum amount of people per point, as well as a maximum amount of distance traveled to visit each point once. Additionally, we set a maximum number of points per group to be respected.
+The goal is to visit each point within a group once, adhering to:
+
+1. A maximum number of people per point.
+2. A maximum distance traveled to visit each point once.
+3. A maximum number of points per group.
 
 **Approach**
 
-I combine information from the following to reach the (tentative) aim:
-1. Google Maps Distance Matrix API
-    I use this API to calculate the pairwise distances between each point from the input coordinates. If I put 10 coordinates, I expect a 10x10 square Matrix as a result, with one row of 0s, the distance to itself.
-2. Google Maps Route API
-    This API is called to get an overview of the distance traveled (by car) for each cluster. It is the goal to specify a limit of how much distance should be allowed to be covered for each group.
-3. KNN Clustering Algorithm
-    Last but not least, I apply simple KNN clustering, based on the physical distances of each point (given by the Distance Matrix), instead of common Euclidian Distance. Then, I cluster group membership for each point, giving a dynamic number of k (number of clusters).
+The approach combines information from:
+
+1. Google Maps Distance Matrix API: Calculates pairwise distances between each point from the input coordinates. For 10 coordinates, a 10x10 square matrix is expected as a result, with one row of 0s representing the distance to itself.
+2. Google Maps Route API: Provides an overview of the distance traveled (by car) for each cluster. This API also offers distance information for each leg of the route, as well as the total distance.
+3. KNN Clustering Algorithm: Applies KNN clustering based on the physical distances of each point (from the Distance Matrix) instead of the common Euclidean Distance. This assigns cluster membership for each point, with a dynamic number of clusters.
+
+
+## Notebooks Overview
+
+
+- **cluster.ipynb**: This notebook contains a basic implementation of the clustering approach.
+- **advanced_function.ipynb**: In this notebook, we apply the same logic as in the basic implementation. However, it includes an enhanced function that considers:
+    - A maximum number of people allowed to visit within a defined cluster.
+    - A maximum distance necessary to visit each point once.
