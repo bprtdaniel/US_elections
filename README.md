@@ -4,7 +4,7 @@ This repository provides sample code on KNN clustering based on the physical dis
 
 ## Overview
 
-The following code replaces manual drawing of clusters, made up of a set number of individual points on a map.
+The following code replaces the manual drawing of clusters, made up of a set number of individual points on a map.
 
 ## Scenario 
 
@@ -41,3 +41,7 @@ The approach combines information from:
 - **advanced_function.ipynb**: In this notebook, we apply the same logic as in the basic implementation. However, it includes an enhanced function that considers:
     - A maximum number of people allowed to visit within a defined cluster.
     - A maximum distance necessary to visit each point once.
+ 
+## Next Steps
+- A Google-Maps-based visualization for the KNN-produced cluster labels.
+- Add a maximum number of geolocation points per cluster threshold into advanced_function.ipynb
