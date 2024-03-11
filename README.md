@@ -45,4 +45,4 @@ The approach combines information from:
 ## Next Steps
 - A Google-Maps-based visualization for the KNN-produced cluster labels.
 - Add a maximum number of geolocation points per cluster threshold into advanced_function.ipynb
-- Add an automatic loop for the advanced_function to continuously update the number of clusters k, if thresholds are exceeded and more clusters need to be introduced in order to stay within the limit.
+- Add an automatic loop for the advanced_function to continuously update the number of clusters k, if thresholds are exceeded and more clusters need to be introduced to stay within the limit.
