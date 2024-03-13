@@ -41,6 +41,7 @@ The approach combines information from:
 - **advanced_function.ipynb**: In this notebook, we apply the same logic as in the basic implementation. However, it includes an enhanced function that considers:
     - A maximum number of people allowed to visit within a defined cluster.
     - A maximum distance necessary to visit each point once.
+- **advanced_script.py** establishes a work-in-progress function that aims to include (1) a check on the overall distance travelled and (2) a check of the amount of people in cluster and continuously updates the number of clusters k in case the maximums are exceeded. The function should run until none of the thresholds are broken.
  
 ## Next Steps
 - A Google-Maps-based visualization for the KNN-produced cluster labels.
