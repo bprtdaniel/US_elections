@@ -1,3 +1,7 @@
+# Work-in-progress script that aims to create independent functions to (1) create distance matrix (2) construct kneans clusters (3) run all three checks on distance, maximum points, maximum number of people.
+# Create one overall function that incoporates all steps and checks, then updates k in case any of the maximum thresholds are broken.
+# Update k and rerun function until k is large enough to meet thresholds.
+
 import numpy as np
 import requests
 from sklearn.cluster import KMeans
@@ -81,6 +85,18 @@ def check_nop(cluster_labels, max_amount_of_people):
     return filtered_clusters
 
 
+"""
+def check_num_points(filtered_clusters, k):
+    
+    # Get list of filtered clusters that passed NOP check and check for max num points in cluster k
+    
+    clusters_post_nop = [[] for _ in range(len(set(filtered_clusters)))]
+    for i, point in enumerate(filtered_clusters):
+        clusters_post_nop[filtered_clusters[i]].append(point)
+"""
+    
+
+
 def check_distance_travelled(filtered_clusters, api_key, max_route_distance):
     
     valid_clusters = []
@@ -118,11 +134,13 @@ def check_distance_travelled(filtered_clusters, api_key, max_route_distance):
 
 
 
-def overall_loop(input_data, api_key, k, max_amount_of_people, max_route_distance):
+def overall_loop(input_data, api_key, k, max_amount_points, max_amount_of_people, max_route_distance):
     while True:
         distance_matrix = get_matrix(input_data, api_key)
         k_clusters = clustering(distance_matrix, k)
         filtered_clusters = check_nop(k_clusters, max_amount_of_people)
+        
+        # Introduce max point check for filtered clustes that passed max nop
         
         if filtered_clusters:
             filtered_clusters_nop = check_distance_travelled(filtered_clusters, api_key, max_route_distance)
@@ -134,6 +152,8 @@ def overall_loop(input_data, api_key, k, max_amount_of_people, max_route_distanc
         else:
             print(f'Cluster result has exceeded nop, increasing number of k')
             k += 1
+            
+            
 
 api_key = "INSERT_KEY"
-overall_loop(lat_long, api_key, 3, 20, 200)
+overall_loop(lat_long, api_key, 3, 40, 20, 200)
