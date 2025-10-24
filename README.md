@@ -1,6 +1,6 @@
-# KNN Clustering for Geographic Data
+# KMeans Clustering for Geographic Data
 
-This repository provides sample code on KNN clustering based on the physical distance between longitude and latitude coordinate points.
+This repository provides sample code on KMeans clustering based on the physical distance between longitude and latitude coordinate points.
 
 ## Overview
 
@@ -31,7 +31,7 @@ The approach combines information from:
 
 1. Google Maps Distance Matrix API: Calculates pairwise distances between each point from the input coordinates. For 10 coordinates, a 10x10 square matrix is expected as a result, with one row of 0s representing the distance to itself.
 2. Google Maps Route API: Provides an overview of the distance traveled (by car) for each cluster. This API also offers distance information for each leg of the route, as well as the total distance.
-3. KNN Clustering Algorithm: Applies KNN clustering based on the physical distances of each point (from the Distance Matrix) instead of the common Euclidean Distance. This assigns cluster membership for each point, with a dynamic number of clusters.
+3. KMeans Clustering Algorithm: Applies KMeans clustering based on the physical distances of each point (from the Distance Matrix) instead of the common Euclidean Distance. This assigns cluster membership for each point, with a dynamic number of clusters.
 
 
 ## Notebooks Overview
@@ -44,6 +44,6 @@ The approach combines information from:
 - **advanced_script.py** establishes a work-in-progress function that aims to include (1) a check on the overall distance travelled and (2) a check of the amount of people in a cluster and continuously updates the number of clusters k in case the maximums are exceeded. The function should run until none of the thresholds are broken. Additionally, (3) a check of the number of overall points in a given cluster will also be included here/
  
 ## Next Steps
-- A Google-Maps-based visualization for the KNN-produced cluster labels.
+- A Google-Maps-based visualization for the KMeans-produced cluster labels.
 - Add a maximum number of geolocation points per cluster threshold into advanced_function.ipynb
 - Add an automatic loop for the advanced_function to continuously update the number of clusters k, if thresholds are exceeded and more clusters need to be introduced to stay within the limit.
